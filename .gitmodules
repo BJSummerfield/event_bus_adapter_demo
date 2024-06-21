@@ -1,0 +1,6 @@
+[submodule "event_bus_adapter_demo_subscriber"]
+	path = event_bus_adapter_demo_subscriber
+	url = git@github.com:BJSummerfield/event_bus_adapter_demo_subscriber.git
+[submodule "event_bus_adapter_demo_publisher"]
+	path = event_bus_adapter_demo_publisher
+	url = git@github.com:BJSummerfield/event_bus_adapter_demo_publisher.git
