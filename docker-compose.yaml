@@ -11,12 +11,22 @@ services:
       timeout: 10s
       retries: 5
 
-  # event_bus_adapter_demo_publisher:
-  #   build: .
-  #   container_name: event_bus_adapter_demo_publisher
-  #   platform: linux/amd64
-  #   depends_on:
-  #     rabbitmq:
-  #       condition: service_healthy
-  #   command: ["/usr/local/bin/event_bus_adapter_demo_publisher"]
+  event_bus_adapter_demo_subscriber:
+    build: ./event_bus_adapter_demo_subscriber
+    container_name: event_bus_adapter_demo_subscriber
+    platform: linux/amd64
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    command: ["/usr/local/bin/event_bus_adapter_demo_subscriber"]
+
+  event_bus_adapter_demo_publisher:
+    build: ./event_bus_adapter_demo_publisher
+    container_name: event_bus_adapter_demo_publisher
+    platform: linux/amd64
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+      event_bus_adapter_demo_subscriber:
+    command: ["/usr/local/bin/event_bus_adapter_demo_publisher"]
 
