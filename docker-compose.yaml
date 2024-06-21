@@ -18,6 +18,8 @@ services:
     depends_on:
       rabbitmq:
         condition: service_healthy
+    env_file:
+      - ./event_bus_adapter_demo_subscriber/.env
     command: ["/usr/local/bin/event_bus_adapter_demo_subscriber"]
 
   event_bus_adapter_demo_publisher:
@@ -27,5 +29,7 @@ services:
     depends_on:
       rabbitmq:
         condition: service_healthy
+    env_file:
+      - ./event_bus_adapter_demo_publisher/.env
     command: ["/usr/local/bin/event_bus_adapter_demo_publisher"]
 
